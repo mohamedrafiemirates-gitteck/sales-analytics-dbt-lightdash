@@ -82,35 +82,30 @@ models:
         description: "Total sales revenue amount."
         meta:
           metrics:
-            total_sales_revenue:
+            sum_total_sales_revenue:
               type: sum
               label: "Total Sales Revenue"
-              sql: ${TABLE}.total_sales
 
       - name: total_cost
         description: "Total cost associated with the sales transaction."
         meta:
           metrics:
-            total_cost:
+            sum_total_cost_of_goods_sold:
               type: sum
               label: "Total Cost of Goods Sold"
-              sql: ${TABLE}.total_cost
 
       - name: gross_profit
         description: "Gross profit calculated as total sales minus total cost."
         meta:
           metrics:
-            gross_profit:
+            sum_total_gross_margin:
               type: sum
-              label: "Total Gross Profit"
-              sql: ${TABLE}.gross_profit
-
+              label: "Total Gross Margin"
 
       - name: net_profit
         description: "Net profit after considering cost and expense impact."
         meta:
           metrics:
-            net_profit:
+            sum_net_margin:
               type: sum
-              label: "Net Profit"
-              sql: ${TABLE}.net_profit
+              label: "Net Margin"
