@@ -84,3 +84,49 @@ models:
 
       - name: net_profit
         description: "Net profit after considering cost and expense impact."
+
+      - name: order_id
+        description: Unique order reference.
+        meta:
+          metrics:
+            total_orders:
+              type: count_distinct
+              label: Total Orders
+
+      - name: total_sales
+        description: Total sales amount.
+        meta:
+          metrics:
+            total_sales:
+              type: sum
+              label: Total Sales
+              round: 2
+
+      - name: total_cost
+        description: Total cost amount.
+        meta:
+          metrics:
+            total_cost:
+              type: sum
+              label: Total Cost
+              round: 2
+
+      - name: gross_profit
+        description: Sales minus cost.
+        meta:
+          metrics:
+            gross_profit:
+              type: sum
+              label: Gross Profit
+              round: 2
+
+      - name: net_profit
+        description: Gross profit minus expenses.
+        meta:
+          metrics:
+            net_profit:
+              type: sum
+              label: Net Profit
+              round: 2
+
+              
