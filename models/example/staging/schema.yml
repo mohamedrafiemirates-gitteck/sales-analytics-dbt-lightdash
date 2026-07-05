@@ -78,7 +78,7 @@ models:
       - name: product_id
         description: "Unique product identifier linked to the product dimension."
 
-       - name: total_sales
+      - name: total_sales
         description: "Total sales revenue amount."
         meta:
           metrics:
@@ -108,4 +108,4 @@ models:
           metrics:
             sum_net_margin:
               type: sum
-              label: "Net Margin" 
+              label: "Net Margin"
