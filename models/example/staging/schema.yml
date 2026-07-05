@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: stg_customers
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_products
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_orders
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
+
+  - name: stg_order_items
+    columns:
+      - name: order_item_id
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        tests:
+          - not_null
+      - name: product_id
+        tests:
+          - not_null
+
+  - name: stg_expenses
+    columns:
+      - name: expense_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_targets
+    columns:
+      - name: target_id
+        tests:
+          - not_null
+          - unique
+
+  - name: mart_sales_profitability
+    description: "Final sales profitability analytics mart combining sales, customer, product, cost, gross profit, and profitability metrics for BI reporting."
+    columns:
+      - name: order_id
+        description: "Unique order reference from the sales order source."
+
+      - name: order_item_id
+        description: "Unique line item reference for each product sold within an order."
+
+      - name: order_date
+        description: "Date when the sales order was created."
+
+      - name: customer_id
+        description: "Unique customer identifier linked to the customer dimension."
+
+      - name: customer_name
+        description: "Customer name used for sales and profitability analysis."
+
+      - name: product_id
+        description: "Unique product identifier linked to the product dimension."
+
+      - name: total_sales
+        description: "Total sales revenue amount."
+
+      - name: total_cost
+        description: "Total cost associated with the sales transaction."
+
+      - name: gross_profit
+        description: "Gross profit calculated as total sales minus total cost."
+
+      - name: net_profit
+        description: "Net profit after considering cost and expense impact."
