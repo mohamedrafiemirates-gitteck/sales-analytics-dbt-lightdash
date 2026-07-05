@@ -78,34 +78,39 @@ models:
       - name: product_id
         description: "Unique product identifier linked to the product dimension."
 
-      - name: total_revenue
+      - name: total_sales
         description: "Total sales revenue amount."
         meta:
           metrics:
-            total_sales:
+            total_sales_revenue:
               type: sum
               label: "Total Sales Revenue"
+              sql: ${TABLE}.total_sales
 
-      - name: total_cogs
+      - name: total_cost
         description: "Total cost associated with the sales transaction."
         meta:
           metrics:
             total_cost:
               type: sum
               label: "Total Cost of Goods Sold"
+              sql: ${TABLE}.total_cost
 
-      - name: gross_margin
+      - name: gross_profit
         description: "Gross profit calculated as total sales minus total cost."
         meta:
           metrics:
             gross_profit:
               type: sum
-              label: "Total Gross Margin"
+              label: "Total Gross Profit"
+              sql: ${TABLE}.gross_profit
 
-      - name: net_margin
+
+      - name: net_profit
         description: "Net profit after considering cost and expense impact."
         meta:
           metrics:
             net_profit:
               type: sum
-              label: "Net Margin"
+              label: "Net Profit"
+              sql: ${TABLE}.net_profit
