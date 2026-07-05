@@ -54,6 +54,34 @@ models:
 
   - name: mart_sales_profitability
     description: "Final sales profitability analytics mart combining sales, customer, product, cost, gross profit, and profitability metrics for BI reporting."
+    
+    meta:
+      metrics:
+        total_orders:
+          type: count_distinct
+          sql: ${TABLE}.order_id
+          label: Total Orders
+
+        total_sales:
+          type: sum
+          sql: SAFE_CAST(${TABLE}.total_sales AS FLOAT64)
+          label: Total Sales
+
+        total_cost:
+          type: sum
+          sql: SAFE_CAST(${TABLE}.total_cost AS FLOAT64)
+          label: Total Cost
+
+        gross_profit:
+          type: sum
+          sql: SAFE_CAST(${TABLE}.gross_profit AS FLOAT64)
+          label: Gross Profit
+
+        net_profit:
+          type: sum
+          sql: SAFE_CAST(${TABLE}.net_profit AS FLOAT64)
+          label: Net Profit    
+    
     columns:
       - name: order_id
         description: "Unique order reference from the sales order source."
@@ -129,4 +157,4 @@ models:
               label: Net Profit
               round: 2
 
-              
+
