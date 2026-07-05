@@ -78,11 +78,11 @@ models:
       - name: product_id
         description: "Unique product identifier linked to the product dimension."
 
-      - name: total_sales
+       - name: total_sales
         description: "Total sales revenue amount."
         meta:
           metrics:
-            total_sales:
+            sum_total_sales_revenue:
               type: sum
               label: "Total Sales Revenue"
 
