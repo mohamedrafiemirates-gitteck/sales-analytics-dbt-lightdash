@@ -54,37 +54,14 @@ models:
 
   - name: mart_sales_profitability
     description: "Final sales profitability analytics mart combining sales, customer, product, cost, gross profit, and profitability metrics for BI reporting."
-    
-    meta:
-      metrics:
-        total_orders:
-          type: count_distinct
-          sql: ${TABLE}.order_id
-          label: Total Orders
-
-        total_sales:
-          type: sum
-          sql: SAFE_CAST(${TABLE}.total_sales AS FLOAT64)
-          label: Total Sales
-
-        total_cost:
-          type: sum
-          sql: SAFE_CAST(${TABLE}.total_cost AS FLOAT64)
-          label: Total Cost
-
-        gross_profit:
-          type: sum
-          sql: SAFE_CAST(${TABLE}.gross_profit AS FLOAT64)
-          label: Gross Profit
-
-        net_profit:
-          type: sum
-          sql: SAFE_CAST(${TABLE}.net_profit AS FLOAT64)
-          label: Net Profit    
-    
     columns:
       - name: order_id
         description: "Unique order reference from the sales order source."
+        meta:
+          metrics:
+            total_orders:
+              type: count_distinct
+              label: "Total Orders"
 
       - name: order_item_id
         description: "Unique line item reference for each product sold within an order."
@@ -103,58 +80,32 @@ models:
 
       - name: total_sales
         description: "Total sales revenue amount."
-
-      - name: total_cost
-        description: "Total cost associated with the sales transaction."
-
-      - name: gross_profit
-        description: "Gross profit calculated as total sales minus total cost."
-
-      - name: net_profit
-        description: "Net profit after considering cost and expense impact."
-
-      - name: order_id
-        description: Unique order reference.
-        meta:
-          metrics:
-            total_orders:
-              type: count_distinct
-              label: Total Orders
-
-      - name: total_sales
-        description: Total sales amount.
         meta:
           metrics:
             total_sales:
               type: sum
-              label: Total Sales
-              round: 2
+              label: "Total Sales"
 
       - name: total_cost
-        description: Total cost amount.
+        description: "Total cost associated with the sales transaction."
         meta:
           metrics:
             total_cost:
               type: sum
-              label: Total Cost
-              round: 2
+              label: "Total Cost"
 
       - name: gross_profit
-        description: Sales minus cost.
+        description: "Gross profit calculated as total sales minus total cost."
         meta:
           metrics:
             gross_profit:
               type: sum
-              label: Gross Profit
-              round: 2
+              label: "Gross Profit"
 
       - name: net_profit
-        description: Gross profit minus expenses.
+        description: "Net profit after considering cost and expense impact."
         meta:
           metrics:
             net_profit:
               type: sum
-              label: Net Profit
-              round: 2
-
-
+              label: "Net Profit"
