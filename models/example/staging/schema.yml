@@ -52,6 +52,31 @@ models:
           - not_null
           - unique
 
+  - name: fact_expenses
+    description: "Fact table containing monthly department-level operating expenses."
+    columns:
+      - name: expense_id
+        description: "Unique expense record identifier."
+        meta:
+          metrics:
+            total_expense_records:
+              type: count_distinct
+              label: "Total Expense Records"
+
+      - name: month
+        description: "Expense month."
+
+      - name: department
+        description: "Department responsible for the expense."
+
+      - name: expense_amount
+        description: "Expense amount recorded for the department and month."
+        meta:
+          metrics:
+            total_expenses:
+              type: sum
+              label: "Total Expenses"        
+
   - name: mart_sales_profitability
     description: "Final sales profitability analytics mart combining sales, customer, product, cost, gross profit, and profitability metrics for BI reporting."
     columns:
